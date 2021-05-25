@@ -6,7 +6,7 @@ import {
 } from '@apollo/client';
 import './App.css';
 import { Box } from '@chakra-ui/react';
-import { LocalForageWrapper, persistCache } from 'apollo3-cache-persist';
+//import { LocalForageWrapper, persistCache } from 'apollo3-cache-persist';
 import ColorCardContainer from './components/ColorCardContainer';
 
 const ADMIN_SECRET_KEY =
@@ -14,10 +14,10 @@ const ADMIN_SECRET_KEY =
 
 function App() {
   const cache = new InMemoryCache();
-  persistCache({
-    cache,
-    storage: new LocalForageWrapper(window.localStorage)
-  });
+  // persistCache({
+  //   cache,
+  //   storage: new LocalForageWrapper(window.localStorage)
+  // });
 
   const client = new ApolloClient({
     link: new HttpLink({
