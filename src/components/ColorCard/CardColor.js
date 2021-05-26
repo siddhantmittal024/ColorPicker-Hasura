@@ -19,7 +19,7 @@ const CardColor = ({ props }) => {
       bgColor="white"
       borderRadius="lg"
       mx="auto"
-      marginTop={["","2"]}
+      marginTop={['', '2']}
       marginBottom="10"
       //my="10"
       flexDirection="column"
