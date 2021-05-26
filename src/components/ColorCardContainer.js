@@ -24,9 +24,9 @@ const ColorCardContainer = () => {
         COLORS
       </Box>
       {loading ? (
-        <div>
+        <Box my="40">
           <Spinner />
-        </div>
+        </Box>
       ) : (
         <Grid
           templateColumns={[
