@@ -1,12 +1,8 @@
-import {
-  ApolloClient,
-  ApolloProvider,
-  HttpLink,
-  InMemoryCache
-} from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { WebSocketLink } from '@apollo/client/link/ws';
 import './App.css';
 import { Box } from '@chakra-ui/react';
-//import { LocalForageWrapper, persistCache } from 'apollo3-cache-persist';
+
 import ColorCardContainer from './components/ColorCardContainer';
 
 const ADMIN_SECRET_KEY =
@@ -14,17 +10,19 @@ const ADMIN_SECRET_KEY =
 
 function App() {
   const cache = new InMemoryCache();
-  // persistCache({
-  //   cache,
-  //   storage: new LocalForageWrapper(window.localStorage)
-  // });
 
   const client = new ApolloClient({
-    link: new HttpLink({
-      uri: 'https://colorpicker.hasura.app/v1/graphql',
-      headers: {
-        'content-type': 'application/json',
-        'x-hasura-admin-secret': ADMIN_SECRET_KEY
+    link: new WebSocketLink({
+      uri: 'wss://colorpicker.hasura.app/v1/graphql',
+      options: {
+        reconnect: true,
+        lazy: true,
+        connectionParams: {
+          headers: {
+            'content-type': 'application/json',
+            'x-hasura-admin-secret': ADMIN_SECRET_KEY
+          }
+        }
       }
     }),
     cache,
@@ -33,7 +31,11 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <Box minHeight="100%" bgGradient="linear(to-t, blue.800, blue.900)">
+      <Box
+        minHeight="100%"
+        bgGradient="linear(to-t, blue.800, blue.900)"
+        boxShadow="lg"
+      >
         <Box padding="6">
           <ColorCardContainer />
         </Box>

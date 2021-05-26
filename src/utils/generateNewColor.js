@@ -1,8 +1,8 @@
 export const hexCodeGenerator = () => {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   const hexCode = '#' + randomColor;
-  console.log(hexCode);
-  console.log(hexTorgbConvert(hexCode));
+  //console.log(hexCode);
+  //console.log(hexTorgbConvert(hexCode));
   return hexCode;
 };
 
