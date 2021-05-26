@@ -8,9 +8,6 @@ export const hexCodeGenerator = () => {
 
 export function hexTorgbConvert(hex) {
   const validHex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (!validHex) {
-    return false;
-  }
   const RGB = {
     r: parseInt(validHex[1], 16),
     g: parseInt(validHex[2], 16),

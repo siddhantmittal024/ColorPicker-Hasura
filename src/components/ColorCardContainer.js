@@ -13,10 +13,15 @@ const ColorCardContainer = () => {
   }
 
   return (
-    <Box bgColor="gray.100" margin="8" minHeight="90vh" borderRadius="md">
-      <Box fontSize="5xl" fontWeight="600" textAlign="center" p="8">
+    <Box
+      bgColor="gray.100"
+      margin={['', '2', '2', '2', '8']}
+      minHeight="90vh"
+      borderRadius="md"
+    >
+      <Box fontSize={['4xl', '5xl']} fontWeight="700" textAlign="center" p="8">
         {' '}
-        COLOR PICKER
+        COLORS
       </Box>
       {loading && (
         <div>
@@ -31,7 +36,7 @@ const ColorCardContainer = () => {
           'repeat(3, 1fr)',
           'repeat(5, 1fr)'
         ]}
-        width="80%"
+        width={['95%', '90%']}
         mx="auto"
       >
         {data &&

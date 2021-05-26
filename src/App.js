@@ -32,7 +32,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Box
-        minHeight="100%"
+        minHeight="100vh"
         bgGradient="linear(to-t, blue.800, blue.900)"
         boxShadow="lg"
       >

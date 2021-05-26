@@ -1,35 +1,11 @@
 import React, { useState } from 'react';
-import { Box, Flex, Button } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import CardLabel from './CardLabel';
-import { DELETE_COLOR } from '../../graphql/gqlQueries';
-import { useMutation } from '@apollo/client';
-
-const DeleteColor = ({ id }) => {
-  const [del] = useMutation(DELETE_COLOR);
-
-  const deleteColor = (e) => {
-    e.stopPropagation();
-    del({
-      variables: {
-        id
-      }
-    });
-  };
-  return (
-    <Button
-      onClick={deleteColor}
-      borderRadius="0"
-      bgColor="red.600"
-      color="white"
-      _hover={{ bgColor: 'red.600' }}
-    >
-      DELETE
-    </Button>
-  );
-};
+import DeleteCard from './DeleteCard';
+import CardCodes from './CardCodes';
 
 const CardColor = ({ props }) => {
-  console.log(props);
+  //console.log(props);
   const [showDeleteButton, setShowDeleteButton] = useState(false);
 
   const { hex, rgb, label, id } = props;
@@ -39,16 +15,18 @@ const CardColor = ({ props }) => {
   return (
     <Flex
       h="72"
-      w="60"
+      w="68"
       bgColor="white"
       borderRadius="lg"
       mx="auto"
-      my="10"
+      marginTop={["","2"]}
+      marginBottom="10"
+      //my="10"
       flexDirection="column"
       boxShadow="lg"
       border="0.5px"
     >
-      <CardLabel />
+      <CardLabel id={id} label={label} />
       <Box
         h="45%"
         w="80%"
@@ -59,9 +37,12 @@ const CardColor = ({ props }) => {
       >
         {showDeleteButton && (
           <Box>
-            <DeleteColor id={id} />
+            <DeleteCard id={id} />
           </Box>
         )}
+      </Box>
+      <Box>
+        <CardCodes rgb={rgb} hex={hex} />
       </Box>
     </Flex>
   );
