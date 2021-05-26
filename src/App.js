@@ -5,9 +5,6 @@ import { Box } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import ColorCardContainer from './components/ColorCardContainer';
 
-const ADMIN_SECRET_KEY =
-  'biNp3K5fkGAdjXyzw3Klp715Gd2eBRvbg6BVaX33SV5dkMX0FIldjVj4F67LdQWG';
-
 function App() {
   const [client, setClient] = useState();
 
@@ -29,7 +26,8 @@ function App() {
               connectionParams: {
                 headers: {
                   'content-type': 'application/json',
-                  'x-hasura-admin-secret': ADMIN_SECRET_KEY
+                  'x-hasura-admin-secret':
+                    'biNp3K5fkGAdjXyzw3Klp715Gd2eBRvbg6BVaX33SV5dkMX0FIldjVj4F67LdQWG'
                 }
               }
             }
