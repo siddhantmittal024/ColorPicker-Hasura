@@ -23,28 +23,29 @@ const ColorCardContainer = () => {
         {' '}
         COLORS
       </Box>
-      {loading && (
+      {loading ? (
         <div>
           <Spinner />
         </div>
+      ) : (
+        <Grid
+          templateColumns={[
+            'repeat(1, 1fr)',
+            'repeat(2, 1fr)',
+            'repeat(2, 1fr)',
+            'repeat(3, 1fr)',
+            'repeat(5, 1fr)'
+          ]}
+          width={['95%', '90%']}
+          mx="auto"
+        >
+          {data &&
+            data.colors.map((color) => (
+              <CardColor key={color.id} props={color} />
+            ))}
+          <AddColorCard />
+        </Grid>
       )}
-      <Grid
-        templateColumns={[
-          'repeat(1, 1fr)',
-          'repeat(2, 1fr)',
-          'repeat(2, 1fr)',
-          'repeat(3, 1fr)',
-          'repeat(5, 1fr)'
-        ]}
-        width={['95%', '90%']}
-        mx="auto"
-      >
-        {data &&
-          data.colors.map((color) => (
-            <CardColor key={color.id} props={color} />
-          ))}
-        <AddColorCard />
-      </Grid>
     </Box>
   );
 };
