@@ -1,6 +1,6 @@
 Hosted the website using Netlify.
 
-Visit Here: 
+Visit Here: https://my-random-color-picker.netlify.app/
 
 # Getting Started with Create React App
 
